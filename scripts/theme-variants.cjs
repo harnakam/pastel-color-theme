@@ -359,7 +359,7 @@ function darken(hex, amount) {
 
 function createColors(tone, mode) {
   const isLight = mode === "light";
-  const foreground = isLight ? darken(tone.fg, 0.1) : tone.fg;
+  const foreground = isLight ? darken(tone.fg, 0.22) : tone.fg;
   const selection = mix(tone.accent, tone.bg, isLight ? 0.5 : 0.38);
   const sidebarBackground = mix(tone.soft, tone.bg, isLight ? 0.45 : 0.42);
   const activityBackground = mix(tone.soft, tone.bg, isLight ? 0.62 : 0.6);
@@ -370,37 +370,37 @@ function createColors(tone, mode) {
     "editor.foreground": foreground,
     "editor.selectionBackground": selection,
     "editorCursor.foreground": isLight ? darken(tone.accent, 0.18) : lighten(tone.accent, 0.1),
-    "editorLineNumber.foreground": mix(foreground, tone.bg, isLight ? 0.5 : 0.42),
-    "editorLineNumber.activeForeground": mix(tone.accent, foreground, isLight ? 0.32 : 0.3),
-    "editorIndentGuide.background1": mix(tone.bg, foreground, isLight ? 0.1 : 0.14),
-    "editorIndentGuide.activeBackground1": mix(tone.accent, foreground, isLight ? 0.5 : 0.35),
-    "editorWhitespace.foreground": mix(tone.bg, foreground, isLight ? 0.08 : 0.1),
-    "editorInlayHint.foreground": tone.muted,
+    "editorLineNumber.foreground": mix(foreground, tone.bg, isLight ? 0.42 : 0.42),
+    "editorLineNumber.activeForeground": mix(tone.accent, foreground, isLight ? 0.24 : 0.3),
+    "editorIndentGuide.background1": mix(tone.bg, foreground, isLight ? 0.14 : 0.14),
+    "editorIndentGuide.activeBackground1": mix(tone.accent, foreground, isLight ? 0.42 : 0.35),
+    "editorWhitespace.foreground": mix(tone.bg, foreground, isLight ? 0.12 : 0.1),
+    "editorInlayHint.foreground": isLight ? darken(tone.muted, 0.12) : tone.muted,
     "editorInlayHint.background": mix(sidebarBackground, tone.bg, isLight ? 0.2 : 0.35),
     "sideBar.foreground": foreground,
     "sideBar.background": sidebarBackground,
     "sideBarTitle.foreground": foreground,
-    "list.activeSelectionForeground": isLight ? darken(foreground, 0.08) : lighten(tone.fg, 0.12),
+    "list.activeSelectionForeground": isLight ? darken(foreground, 0.05) : lighten(tone.fg, 0.12),
     "list.activeSelectionBackground": selection,
     "list.inactiveSelectionForeground": foreground,
     "list.inactiveSelectionBackground": mix(selection, tone.bg, isLight ? 0.18 : 0.35),
     "activityBar.foreground": foreground,
     "activityBar.background": activityBackground,
-    "statusBar.foreground": isLight ? darken(foreground, 0.08) : lighten(tone.fg, 0.12),
+    "statusBar.foreground": isLight ? darken(foreground, 0.05) : lighten(tone.fg, 0.12),
     "statusBar.background": tone.status,
-    "tab.activeForeground": isLight ? darken(foreground, 0.08) : lighten(tone.fg, 0.12),
-    "tab.inactiveForeground": tone.muted,
-    "titleBar.activeForeground": isLight ? darken(foreground, 0.08) : lighten(tone.fg, 0.12),
-    "titleBar.inactiveForeground": tone.muted
+    "tab.activeForeground": isLight ? darken(foreground, 0.05) : lighten(tone.fg, 0.12),
+    "tab.inactiveForeground": isLight ? darken(tone.muted, 0.08) : tone.muted,
+    "titleBar.activeForeground": isLight ? darken(foreground, 0.05) : lighten(tone.fg, 0.12),
+    "titleBar.inactiveForeground": isLight ? darken(tone.muted, 0.08) : tone.muted
   };
 }
 
 function createTokenColors(tokenSet, tone, mode) {
   const isLight = mode === "light";
   const commentColor = isLight ? mix(tokenSet.constant, tone.bg, 0.55) : mix(tone.muted, tokenSet.constant, 0.22);
-  const lightForeground = isLight ? darken(tone.fg, 0.1) : tone.fg;
-  const variableColor = isLight ? mix(lightForeground, tokenSet.function, 0.12) : mix(tone.fg, tokenSet.function, 0.08);
-  const adjust = (hex) => (isLight ? darken(hex, 0.08) : lighten(hex, 0.14));
+  const lightForeground = isLight ? darken(tone.fg, 0.22) : tone.fg;
+  const variableColor = isLight ? mix(lightForeground, tokenSet.function, 0.08) : mix(tone.fg, tokenSet.function, 0.08);
+  const adjust = (hex) => (isLight ? darken(hex, 0.16) : lighten(hex, 0.14));
 
   return [
     { name: "Keyword", scope: THEME_SCOPES.keyword, settings: { foreground: adjust(tokenSet.keyword) } },
