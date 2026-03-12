@@ -37,7 +37,10 @@ function resolvePreferredTheme() {
 }
 
 async function applyTheme(themeName) {
-  await vscode.workspace.getConfiguration("workbench").update("colorTheme", themeName, vscode.ConfigurationTarget.Global);
+  const workbenchConfig = vscode.workspace.getConfiguration("workbench");
+  await workbenchConfig.update("colorTheme", themeName, vscode.ConfigurationTarget.Global);
+  await workbenchConfig.update("preferredLightColorTheme", themeName, vscode.ConfigurationTarget.Global);
+  await workbenchConfig.update("preferredDarkColorTheme", themeName, vscode.ConfigurationTarget.Global);
 }
 
 async function applyPreferredTheme() {
