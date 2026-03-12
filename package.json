@@ -94,6 +94,7 @@
         "pastelColorTheme.preferredTheme": {
           "type": "string",
           "enum": [
+            "",
             "Soft Pastel White Light",
             "Soft Pastel White Dark",
             "Soft Pastel Black Light",
@@ -113,8 +114,8 @@
             "Soft Pastel Brown Light",
             "Soft Pastel Brown Dark"
           ],
-          "default": "Soft Pastel Aqua Light",
-          "markdownDescription": "Exact theme variant to apply. If set, this takes precedence over mode and palette."
+          "default": "",
+          "markdownDescription": "Exact theme variant to apply. Leave empty to use Preferred Mode and Preferred Palette."
         }
       }
     },

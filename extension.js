@@ -4,10 +4,28 @@ const { paletteOptions, themeNames } = require("./scripts/theme-variants.cjs");
 const THEME_NAMES = themeNames;
 const PALETTE_LABELS = new Map(paletteOptions.map((palette) => [palette.id, palette.label]));
 
+function parseThemeName(themeName) {
+  const match = /^Soft Pastel (.+) (Light|Dark)$/.exec(themeName);
+  if (!match) {
+    return undefined;
+  }
+
+  const [, paletteLabel, modeLabel] = match;
+  const palette = paletteOptions.find((entry) => entry.label === paletteLabel);
+  if (!palette) {
+    return undefined;
+  }
+
+  return {
+    palette: palette.id,
+    mode: modeLabel.toLowerCase()
+  };
+}
+
 function resolvePreferredTheme() {
   const config = vscode.workspace.getConfiguration("pastelColorTheme");
   const explicitTheme = config.get("preferredTheme");
-  if (THEME_NAMES.includes(explicitTheme)) {
+  if (typeof explicitTheme === "string" && explicitTheme && THEME_NAMES.includes(explicitTheme)) {
     return explicitTheme;
   }
 
@@ -28,6 +46,14 @@ async function applyPreferredTheme() {
   return themeName;
 }
 
+async function clearExplicitThemeSelection() {
+  const config = vscode.workspace.getConfiguration("pastelColorTheme");
+  const explicitTheme = config.get("preferredTheme");
+  if (explicitTheme) {
+    await config.update("preferredTheme", "", vscode.ConfigurationTarget.Global);
+  }
+}
+
 function activate(context) {
   context.subscriptions.push(vscode.commands.registerCommand("pastelColorTheme.applyPreferredTheme", async () => {
     const themeName = await applyPreferredTheme();
@@ -44,6 +70,11 @@ function activate(context) {
     }
 
     const config = vscode.workspace.getConfiguration("pastelColorTheme");
+    const parsed = parseThemeName(selected);
+    if (parsed) {
+      await config.update("preferredMode", parsed.mode, vscode.ConfigurationTarget.Global);
+      await config.update("preferredPalette", parsed.palette, vscode.ConfigurationTarget.Global);
+    }
     await config.update("preferredTheme", selected, vscode.ConfigurationTarget.Global);
     await applyTheme(selected);
     vscode.window.showInformationMessage(`Applied theme: ${selected}`);
@@ -59,10 +90,21 @@ function activate(context) {
       return;
     }
 
-    const updatedConfig = vscode.workspace.getConfiguration("pastelColorTheme");
-    if (updatedConfig.get("applyOnStartup", true)) {
-      applyPreferredTheme().catch(() => undefined);
-    }
+    const shouldClearExplicitTheme = event.affectsConfiguration("pastelColorTheme.preferredMode")
+      || event.affectsConfiguration("pastelColorTheme.preferredPalette");
+
+    const applyChanges = async () => {
+      const updatedConfig = vscode.workspace.getConfiguration("pastelColorTheme");
+      if (shouldClearExplicitTheme) {
+        await clearExplicitThemeSelection();
+      }
+
+      if (updatedConfig.get("applyOnStartup", true)) {
+        await applyPreferredTheme();
+      }
+    };
+
+    applyChanges().catch(() => undefined);
   }));
 }
 
