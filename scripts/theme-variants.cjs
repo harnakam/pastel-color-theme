@@ -359,46 +359,48 @@ function darken(hex, amount) {
 
 function createColors(tone, mode) {
   const isLight = mode === "light";
+  const fg = isLight ? lighten(tone.fg, 0.2) : tone.fg;
   const selection = mix(tone.accent, tone.bg, isLight ? 0.5 : 0.38);
   const sidebarBackground = mix(tone.soft, tone.bg, isLight ? 0.45 : 0.42);
   const activityBackground = mix(tone.soft, tone.bg, isLight ? 0.62 : 0.6);
 
   return {
-    foreground: tone.fg,
+    foreground: fg,
     "editor.background": tone.bg,
-    "editor.foreground": tone.fg,
+    "editor.foreground": fg,
     "editor.selectionBackground": selection,
     "editorCursor.foreground": isLight ? darken(tone.accent, 0.18) : lighten(tone.accent, 0.1),
-    "editorLineNumber.foreground": mix(tone.fg, tone.bg, isLight ? 0.55 : 0.42),
-    "editorLineNumber.activeForeground": mix(tone.accent, tone.fg, isLight ? 0.4 : 0.3),
-    "editorIndentGuide.background1": mix(tone.bg, tone.fg, isLight ? 0.08 : 0.14),
-    "editorIndentGuide.activeBackground1": mix(tone.accent, tone.fg, isLight ? 0.55 : 0.35),
-    "editorWhitespace.foreground": mix(tone.bg, tone.fg, isLight ? 0.06 : 0.1),
-    "editorInlayHint.foreground": tone.muted,
+    "editorLineNumber.foreground": mix(fg, tone.bg, isLight ? 0.55 : 0.42),
+    "editorLineNumber.activeForeground": mix(tone.accent, fg, isLight ? 0.4 : 0.3),
+    "editorIndentGuide.background1": mix(tone.bg, fg, isLight ? 0.08 : 0.14),
+    "editorIndentGuide.activeBackground1": mix(tone.accent, fg, isLight ? 0.55 : 0.35),
+    "editorWhitespace.foreground": mix(tone.bg, fg, isLight ? 0.06 : 0.1),
+    "editorInlayHint.foreground": isLight ? lighten(tone.muted, 0.15) : tone.muted,
     "editorInlayHint.background": mix(sidebarBackground, tone.bg, isLight ? 0.2 : 0.35),
-    "sideBar.foreground": tone.fg,
+    "sideBar.foreground": fg,
     "sideBar.background": sidebarBackground,
-    "sideBarTitle.foreground": tone.fg,
-    "list.activeSelectionForeground": isLight ? darken(tone.fg, 0.12) : lighten(tone.fg, 0.12),
+    "sideBarTitle.foreground": fg,
+    "list.activeSelectionForeground": isLight ? darken(fg, 0.12) : lighten(fg, 0.12),
     "list.activeSelectionBackground": selection,
-    "list.inactiveSelectionForeground": tone.fg,
+    "list.inactiveSelectionForeground": fg,
     "list.inactiveSelectionBackground": mix(selection, tone.bg, isLight ? 0.18 : 0.35),
-    "activityBar.foreground": tone.fg,
+    "activityBar.foreground": fg,
     "activityBar.background": activityBackground,
-    "statusBar.foreground": isLight ? darken(tone.fg, 0.12) : lighten(tone.fg, 0.12),
+    "statusBar.foreground": isLight ? darken(fg, 0.12) : lighten(fg, 0.12),
     "statusBar.background": tone.status,
-    "tab.activeForeground": isLight ? darken(tone.fg, 0.12) : lighten(tone.fg, 0.12),
-    "tab.inactiveForeground": tone.muted,
-    "titleBar.activeForeground": isLight ? darken(tone.fg, 0.12) : lighten(tone.fg, 0.12),
-    "titleBar.inactiveForeground": tone.muted
+    "tab.activeForeground": isLight ? darken(fg, 0.12) : lighten(fg, 0.12),
+    "tab.inactiveForeground": isLight ? lighten(tone.muted, 0.15) : tone.muted,
+    "titleBar.activeForeground": isLight ? darken(fg, 0.12) : lighten(fg, 0.12),
+    "titleBar.inactiveForeground": isLight ? lighten(tone.muted, 0.15) : tone.muted
   };
 }
 
 function createTokenColors(tokenSet, tone, mode) {
   const isLight = mode === "light";
+  const fg = isLight ? lighten(tone.fg, 0.2) : tone.fg;
   const commentColor = isLight ? mix(tokenSet.constant, tone.bg, 0.55) : mix(tone.muted, tokenSet.constant, 0.22);
-  const variableColor = isLight ? mix(tone.fg, tokenSet.function, 0.15) : mix(tone.fg, tokenSet.function, 0.08);
-  const adjust = (hex) => (isLight ? darken(hex, 0.04) : lighten(hex, 0.14));
+  const variableColor = isLight ? mix(fg, tokenSet.function, 0.2) : mix(tone.fg, tokenSet.function, 0.08);
+  const adjust = (hex) => (isLight ? mix(hex, tone.bg, 0.1) : lighten(hex, 0.14));
 
   return [
     { name: "Keyword", scope: THEME_SCOPES.keyword, settings: { foreground: adjust(tokenSet.keyword) } },
