@@ -1,0 +1,13 @@
+{
+  "files.associations": {
+    "*.color-theme.jsonc": "jsonc"
+  },
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "themes/*.color-theme.jsonc"
+      ],
+      "url": "vscode://schemas/color-theme"
+    }
+  ]
+}

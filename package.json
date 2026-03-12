@@ -1,0 +1,214 @@
+{
+  "name": "pastel-color-theme",
+  "displayName": "pastel color theme",
+  "publisher": "harnakam",
+  "description": "A multi-variant pastel theme pack for VS Code with configurable light and dark palettes.",
+  "version": "0.0.1",
+  "main": "./extension.js",
+  "license": "UNLICENSED",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/harnakam/pastel-color-theme.git"
+  },
+  "bugs": {
+    "url": "https://github.com/harnakam/pastel-color-theme/issues"
+  },
+  "homepage": "https://github.com/harnakam/pastel-color-theme#readme",
+  "scripts": {
+    "build": "node ./scripts/build-theme.mjs",
+    "theme:build": "node ./scripts/build-theme.mjs"
+  },
+  "engines": {
+    "vscode": "^1.110.0"
+  },
+  "devDependencies": {
+  },
+  "files": [
+    "themes/**",
+    "scripts/theme-variants.cjs",
+    "extension.js",
+    "package.json",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE.txt"
+  ],
+  "keywords": [
+    "theme",
+    "color-theme",
+    "pastel",
+    "light-theme",
+    "dark-theme",
+    "accessibility"
+  ],
+  "categories": [
+    "Themes"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "pastelColorTheme.applyPreferredTheme",
+        "title": "Pastel Color Theme: Apply Preferred Theme"
+      },
+      {
+        "command": "pastelColorTheme.selectVariant",
+        "title": "Pastel Color Theme: Select Theme Variant"
+      }
+    ],
+    "configuration": {
+      "title": "Pastel Color Theme",
+      "properties": {
+        "pastelColorTheme.applyOnStartup": {
+          "type": "boolean",
+          "default": true,
+          "description": "Apply the preferred Pastel Color Theme variant when VS Code starts."
+        },
+        "pastelColorTheme.preferredMode": {
+          "type": "string",
+          "enum": [
+            "light",
+            "dark"
+          ],
+          "default": "light",
+          "description": "Preferred brightness mode for the Pastel Color Theme variants."
+        },
+        "pastelColorTheme.preferredPalette": {
+          "type": "string",
+          "enum": [
+            "white",
+            "black",
+            "pink",
+            "aqua",
+            "yellow",
+            "orange",
+            "green",
+            "gray",
+            "brown"
+          ],
+          "default": "aqua",
+          "description": "Preferred pastel palette family."
+        },
+        "pastelColorTheme.preferredTheme": {
+          "type": "string",
+          "enum": [
+            "Soft Pastel White Light",
+            "Soft Pastel White Dark",
+            "Soft Pastel Black Light",
+            "Soft Pastel Black Dark",
+            "Soft Pastel Pink Light",
+            "Soft Pastel Pink Dark",
+            "Soft Pastel Aqua Light",
+            "Soft Pastel Aqua Dark",
+            "Soft Pastel Yellow Light",
+            "Soft Pastel Yellow Dark",
+            "Soft Pastel Orange Light",
+            "Soft Pastel Orange Dark",
+            "Soft Pastel Green Light",
+            "Soft Pastel Green Dark",
+            "Soft Pastel Gray Light",
+            "Soft Pastel Gray Dark",
+            "Soft Pastel Brown Light",
+            "Soft Pastel Brown Dark"
+          ],
+          "default": "Soft Pastel Aqua Light",
+          "markdownDescription": "Exact theme variant to apply. If set, this takes precedence over mode and palette."
+        }
+      }
+    },
+    "themes": [
+      {
+        "label": "Soft Pastel White Light",
+        "uiTheme": "vs",
+        "path": "./themes/Soft Pastel White Light-color-theme.json"
+      },
+      {
+        "label": "Soft Pastel White Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/Soft Pastel White Dark-color-theme.json"
+      },
+      {
+        "label": "Soft Pastel Black Light",
+        "uiTheme": "vs",
+        "path": "./themes/Soft Pastel Black Light-color-theme.json"
+      },
+      {
+        "label": "Soft Pastel Black Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/Soft Pastel Black Dark-color-theme.json"
+      },
+      {
+        "label": "Soft Pastel Pink Light",
+        "uiTheme": "vs",
+        "path": "./themes/Soft Pastel Pink Light-color-theme.json"
+      },
+      {
+        "label": "Soft Pastel Pink Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/Soft Pastel Pink Dark-color-theme.json"
+      },
+      {
+        "label": "Soft Pastel Aqua Light",
+        "uiTheme": "vs",
+        "path": "./themes/Soft Pastel Aqua Light-color-theme.json"
+      },
+      {
+        "label": "Soft Pastel Aqua Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/Soft Pastel Aqua Dark-color-theme.json"
+      },
+      {
+        "label": "Soft Pastel Yellow Light",
+        "uiTheme": "vs",
+        "path": "./themes/Soft Pastel Yellow Light-color-theme.json"
+      },
+      {
+        "label": "Soft Pastel Yellow Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/Soft Pastel Yellow Dark-color-theme.json"
+      },
+      {
+        "label": "Soft Pastel Orange Light",
+        "uiTheme": "vs",
+        "path": "./themes/Soft Pastel Orange Light-color-theme.json"
+      },
+      {
+        "label": "Soft Pastel Orange Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/Soft Pastel Orange Dark-color-theme.json"
+      },
+      {
+        "label": "Soft Pastel Green Light",
+        "uiTheme": "vs",
+        "path": "./themes/Soft Pastel Green Light-color-theme.json"
+      },
+      {
+        "label": "Soft Pastel Green Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/Soft Pastel Green Dark-color-theme.json"
+      },
+      {
+        "label": "Soft Pastel Gray Light",
+        "uiTheme": "vs",
+        "path": "./themes/Soft Pastel Gray Light-color-theme.json"
+      },
+      {
+        "label": "Soft Pastel Gray Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/Soft Pastel Gray Dark-color-theme.json"
+      },
+      {
+        "label": "Soft Pastel Brown Light",
+        "uiTheme": "vs",
+        "path": "./themes/Soft Pastel Brown Light-color-theme.json"
+      },
+      {
+        "label": "Soft Pastel Brown Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/Soft Pastel Brown Dark-color-theme.json"
+      }
+    ]
+  }
+}

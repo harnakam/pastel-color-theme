@@ -1,0 +1,150 @@
+{
+  "name": "Soft Pastel Yellow Light",
+  "colors": {
+    "foreground": "#595142",
+    "editor.background": "#F7F0D8",
+    "editor.foreground": "#595142",
+    "editor.selectionBackground": "#ebddb4",
+    "editorCursor.foreground": "#b7a575",
+    "editorLineNumber.foreground": "#b0a895",
+    "editorLineNumber.activeForeground": "#a99970",
+    "editorIndentGuide.background1": "#eae3cc",
+    "editorIndentGuide.activeBackground1": "#958765",
+    "editorWhitespace.foreground": "#eee6cf",
+    "editorInlayHint.foreground": "#AA9B79",
+    "editorInlayHint.background": "#f3eaca",
+    "sideBar.foreground": "#595142",
+    "sideBar.background": "#f2e8c6",
+    "sideBarTitle.foreground": "#595142",
+    "list.activeSelectionForeground": "#4e473a",
+    "list.activeSelectionBackground": "#ebddb4",
+    "list.inactiveSelectionForeground": "#595142",
+    "list.inactiveSelectionBackground": "#ede0ba",
+    "activityBar.foreground": "#595142",
+    "activityBar.background": "#f3eacc",
+    "statusBar.foreground": "#4e473a",
+    "statusBar.background": "#E4D4A6",
+    "tab.activeForeground": "#4e473a",
+    "tab.inactiveForeground": "#AA9B79",
+    "titleBar.activeForeground": "#4e473a",
+    "titleBar.inactiveForeground": "#AA9B79"
+  },
+  "tokenColors": [
+    {
+      "name": "Keyword",
+      "scope": [
+        "keyword",
+        "keyword.control",
+        "storage",
+        "storage.type",
+        "storage.modifier",
+        "punctuation.separator.key-value",
+        "punctuation.separator.key-value.properties"
+      ],
+      "settings": {
+        "foreground": "#ae97cc"
+      }
+    },
+    {
+      "name": "String",
+      "scope": [
+        "string",
+        "string.unquoted",
+        "string.unquoted.properties",
+        "meta.property-value",
+        "meta.property-value.properties"
+      ],
+      "settings": {
+        "foreground": "#99b68b"
+      }
+    },
+    {
+      "name": "Comment",
+      "scope": [
+        "comment",
+        "comment.line.number-sign",
+        "comment.line.exclamation",
+        "punctuation.definition.comment"
+      ],
+      "settings": {
+        "fontStyle": "italic",
+        "foreground": "#e5cec6"
+      }
+    },
+    {
+      "name": "Function",
+      "scope": [
+        "entity.name.function",
+        "support.function",
+        "meta.function-call",
+        "variable.function",
+        "support.function.property-list"
+      ],
+      "settings": {
+        "foreground": "#89b2c7"
+      }
+    },
+    {
+      "name": "Variable",
+      "scope": [
+        "variable",
+        "support.variable",
+        "variable.other.key",
+        "variable.other.key.properties",
+        "entity.other.attribute-name",
+        "entity.other.attribute-name.properties"
+      ],
+      "settings": {
+        "foreground": "#616157"
+      }
+    },
+    {
+      "name": "Number",
+      "scope": [
+        "constant.numeric",
+        "number",
+        "constant.numeric.integer",
+        "constant.numeric.float"
+      ],
+      "settings": {
+        "foreground": "#dba978"
+      }
+    },
+    {
+      "name": "Type",
+      "scope": [
+        "entity.name.type",
+        "support.type",
+        "storage.type"
+      ],
+      "settings": {
+        "foreground": "#baabd8"
+      }
+    },
+    {
+      "name": "Class",
+      "scope": [
+        "entity.name.class",
+        "support.class"
+      ],
+      "settings": {
+        "foreground": "#b4bde1"
+      }
+    },
+    {
+      "name": "Constant",
+      "scope": [
+        "constant",
+        "support.constant",
+        "variable.other.constant",
+        "constant.language.boolean",
+        "constant.language.boolean.properties",
+        "constant.character.escape",
+        "constant.character.escape.properties"
+      ],
+      "settings": {
+        "foreground": "#c89ea8"
+      }
+    }
+  ]
+}
