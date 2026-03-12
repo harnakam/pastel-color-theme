@@ -1,5 +1,9 @@
 # pastel-color-theme
 
+![Icon](images/icon.png)
+
+![Screenshot](images/screenshot1.png)
+
 この拡張は 1 つの中に複数のパステルテーマを持つ theme pack です。設定から Light / Dark と palette を選び、既定テーマとして自動適用できます。
 
 ## Flow

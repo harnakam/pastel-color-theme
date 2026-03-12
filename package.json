@@ -22,8 +22,7 @@
   "engines": {
     "vscode": "^1.110.0"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "files": [
     "themes/**",
     "scripts/theme-variants.cjs",
@@ -31,7 +30,8 @@
     "package.json",
     "README.md",
     "CHANGELOG.md",
-    "LICENSE.txt"
+    "LICENSE.txt",
+    "images/**"
   ],
   "keywords": [
     "theme",
@@ -210,5 +210,10 @@
         "path": "./themes/Soft Pastel Brown Dark-color-theme.json"
       }
     ]
+  },
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#fdf6e3",
+    "theme": "light"
   }
 }
